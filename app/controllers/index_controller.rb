@@ -7,6 +7,8 @@ class IndexController < ApplicationController
       flash[:notice] = 'Please specify the url.'
       return redirect_to :status
     end
+
+    @video = Video.parse(params[:url])
   end
 
   def download

@@ -1,2 +1,8 @@
-<h1>Index#status</h1>
-<p>Find me in app/views/index/status.html.erb</p>
+<h2>status</h2>
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+<%= form_tag :parse, method: :get do %>
+<p>url: <%= text_field_tag :url %></p>
+<p><%= submit_tag "parse" %></p>
+<% end %>

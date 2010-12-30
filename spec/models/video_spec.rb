@@ -8,7 +8,10 @@ describe Video do
   end
 
   describe :recent do
-    before { @recent = Video.recent }
+    before do
+      Video.stub(:recent).and_return([Video.new] * 10)
+      @recent = Video.recent
+    end
     describe do
       subject { @recent }
       it { should have_at_most(10).items }

@@ -5,9 +5,9 @@ class CreateVideos < ActiveRecord::Migration
       t.text :title
       t.text :video_url
       t.text :download_path
-      t.boolean :downloaded
+      t.boolean :downloaded, default: false
       t.text :encoded_path
-      t.boolean :encoded
+      t.boolean :encoded, default: false
 
       t.timestamps
     end

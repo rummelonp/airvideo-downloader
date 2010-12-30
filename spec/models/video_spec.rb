@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Video do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe :parse do
+    subject { Video.parse('http://example.com/video_url') }
+    it { should be_instance_of(Video) }
+  end
+
 end

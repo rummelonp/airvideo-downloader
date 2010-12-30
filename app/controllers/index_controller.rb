@@ -3,6 +3,10 @@ class IndexController < ApplicationController
   end
 
   def parse
+    unless params[:url]
+      flash[:notice] = 'Please specify the url.'
+      return redirect_to :status
+    end
   end
 
   def download

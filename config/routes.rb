@@ -1,4 +1,10 @@
 AirvideoDownloader::Application.routes.draw do
+  get "index/status"
+
+  get "index/parse"
+
+  get "index/download"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

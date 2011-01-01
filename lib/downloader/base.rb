@@ -9,7 +9,11 @@ module Downloader
 
       def parse(url)
         instance = self.new
-        # do something
+        instance.url = url
+        instance.body = open(url).read
+        if instance.body.match(%r{<title>(.*?)</title>}m)
+          instance.title = $1.to_s.strip.gsub(%r{[\n\r\t]}m, '')
+        end
         instance
       end
     end

@@ -1,5 +1,6 @@
 class IndexController < ApplicationController
   def status
+    @videos = Video.recent
   end
 
   def parse

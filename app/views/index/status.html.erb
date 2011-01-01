@@ -6,3 +6,23 @@
 <p>url: <%= text_field_tag :url %></p>
 <p><%= submit_tag "parse" %></p>
 <% end %>
+<div id="content">
+  <% @videos.each do |video| %>
+  <dt>
+    <dl>title:</dl>
+    <dd><%= @video.title %></dd>
+    <dl>url:</dl>
+    <dd><%= @video.url %></dd>
+    <dl>video url:</dl>
+    <dd><%= @video.video_url %></dd>
+    <dl>download path:</dl>
+    <dd><%= @video.download_path %></dd>
+    <dl>downloaded:</dl>
+    <dd><%= @video.downloaded %></dd>
+    <dl>encoded path:</dl>
+    <dd><%= @video.encoded_path %></dd>
+    <dl>encoded:</dl>
+    <dd><%= @video.encoded %></dd>
+  </dt>
+  <% end %>
+</div>

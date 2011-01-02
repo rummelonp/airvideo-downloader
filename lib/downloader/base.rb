@@ -3,7 +3,6 @@
 module Downloader
   class Base
     class << self
-      attr_accessor :video_dir
       attr_reader :host
       alias_method :parsers, :subclasses
 

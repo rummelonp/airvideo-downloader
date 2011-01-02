@@ -13,6 +13,7 @@ class IndexController < ApplicationController
   end
 
   def download
+    flash[:notice] = 'Downloading and encoding.'
     redirect_to :status
   end
 

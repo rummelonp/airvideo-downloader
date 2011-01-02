@@ -43,4 +43,16 @@ describe IndexController do
 
   end
 
+  describe 'POST "/download"' do
+    context :response do
+      before { post :download }
+      subject { response }
+      it { should be_redirect }
+      describe :redirect_to do
+        subject { URI.parse(response.redirect_url).request_uri }
+        it { should == '/' }
+      end
+    end
+  end
+
 end

@@ -4,12 +4,12 @@ class IndexController < ApplicationController
   end
 
   def parse
-    unless params[:url]
+    unless url = params.delete(:url)
       flash[:notice] = 'Please specify the url.'
       return redirect_to :status
     end
 
-    @video = Video.parse(params[:url])
+    @video = Video.find_by_url(url) || Video.parse(url)
   end
 
   def download

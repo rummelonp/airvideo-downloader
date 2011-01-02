@@ -1,8 +1,11 @@
 class Video < ActiveRecord::Base
 
   def self.parse(url)
+    downloader = Downloader.parse url
     video = self.new
-    video.url = url
+    video.url = downloader.url
+    video.title = downloader.title
+    video.video_url = downloader.video_url
     video
   end
 

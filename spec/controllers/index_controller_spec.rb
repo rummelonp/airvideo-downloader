@@ -44,14 +44,20 @@ describe IndexController do
   end
 
   describe 'POST "/download"' do
+    before { post :download }
+
     context :response do
-      before { post :download }
       subject { response }
       it { should be_redirect }
       describe :redirect_to do
         subject { URI.parse(response.redirect_url).request_uri }
         it { should == '/' }
       end
+    end
+
+    describe :flash, :notice do
+      subject { request.session['flash'][:notice] }
+      it { should == 'Downloading and encoding.' }
     end
   end
 

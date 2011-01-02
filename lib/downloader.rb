@@ -16,6 +16,6 @@ module Downloader
   end
 
   def download(video_url, download_path)
-    File.open(download_path, 'w') {|f| f.write open(video_url)}
+    File.open(download_path, 'w') {|f| f.write open(video_url).read}
   end
 end

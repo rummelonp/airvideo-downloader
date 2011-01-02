@@ -1,16 +1,16 @@
 <h2>parse</h2>
-<%= form_tag :download do  %>
+<% form_for @video, url: :download do |f| %>
 <dt>
   <dl>title:</dl>
-  <dd><%= text_field_tag :title, @video.title, size: 50 %></dd>
+  <dd><%= f.text_field :title, size: 50 %></dd>
   <dl>url:</dl>
-  <dd><%= text_field_tag :url, @video.url, size: 50 %></dd>
+  <dd><%= f.text_field :url, size: 50 %></dd>
   <dl>video url:</dl>
-  <dd><%= text_field_tag :video_url, @video.video_url, size: 50 %></dd>
+  <dd><%= f.text_field :video_url, size: 50 %></dd>
   <dl>download path:</dl>
-  <dd><%= text_field_tag :download_path, @video.download_path, size: 50 %></dd>
+  <dd><%= f.text_field :download_path, size: 50 %></dd>
   <dl>encoded path:</dl>
-  <dd><%= text_field_tag :encoded_path, @video.encoded_path, size: 50 %></dd>
+  <dd><%= f.text_field :encoded_path, size: 50 %></dd>
   <dl>downloaded:</dl>
   <dd><%= @video.downloaded %></dd>
   <dl>encoded:</dl>

@@ -55,12 +55,12 @@ class Ffmpeg
     vcodec  = "-vcodec mpeg4"
     vsize   = "-s #{@data[:size] or DEFAULT[:size]}"
     vrate   = "-r #{@metadata[:framerate] or DEFAULT[:framerate]}"
-    vbit    = "-b #{@data[:bitrate].strip.gsub(/k?b/, '') or DEFAULT[:bitrate]}k"
+    vbit    = "-b #{@data[:bitrate].split(' ').first or DEFAULT[:bitrate]}k"
     acodec  = "-acodec libfaac"
     achan   = "-ac 2"
     arate   = "-ar #{@metadata[:audiosamplerate] or DEFAULT[:audiosamplerate]}"
     abit    = "-ab #{@metadata[:audiodatarate] or DEFAULT[:audiodatarate]}k"
-    output  = path.shellescape
+    output  = "#{path.shellescape} 2>&1"
     command = [exec, input,
                vcodec, vsize, vrate, vbit,
                acodec, achan, arate, abit,

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Video do
 
   describe :parse do
+    before { Video.stub(:parse).and_return(Video.new) }
     subject { Video.parse('http://example.com/video_url') }
     it { should be_instance_of(Video) }
   end

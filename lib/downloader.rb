@@ -2,6 +2,7 @@
 
 require 'open-uri'
 require 'uri'
+require 'shellwords'
 
 Dir[Rails.root.join("lib/downloader/*.rb")].each {|f| require f}
 
@@ -16,6 +17,6 @@ module Downloader
   end
 
   def download(video_url, download_path)
-    File.open(download_path, 'w') {|f| f.write open(video_url).read}
+    `wget -O #{download_path.shellescape} '#{video_url}' 2>&1`
   end
 end

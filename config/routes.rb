@@ -1,9 +1,9 @@
 AirvideoDownloader::Application.routes.draw do
   root :to => "index#status", as: :status
 
-  get "/parse" => "index#parse", as: :parse
+  match "/parse" => "index#parse", as: :parse
 
-  post "/download" => "index#download", as: :download
+  match "/download" => "index#download", as: :download
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

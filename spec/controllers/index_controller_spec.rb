@@ -63,6 +63,32 @@ describe IndexController do
       end
     end
 
+    context 'with video parameters' do
+      before do
+        post :download, video: {
+          url: 'http://example.com/video_url',
+          title: 'Test Title',
+          video_url: 'http://example.com/video_url.flv',
+          download_path: '/tmp/test_title.flv',
+          encoded_path: '/tmp/test_title - airvideo.m4v'
+        }
+      end
+
+      describe :response do
+        subject { response }
+        it { should be_redirect }
+        describe :redirect_to do
+          subject { URI.parse(response.redirect_url).request_uri }
+          it { should == '/' }
+        end
+      end
+
+      describe :flash, :notice do
+        subject { request.session['flash'][:notice] }
+        it { should == 'Downloading and encoding.' }
+      end
+    end
+
   end
 
 end

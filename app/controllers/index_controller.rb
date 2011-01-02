@@ -13,6 +13,7 @@ class IndexController < ApplicationController
   end
 
   def download
+    redirect_to :status
   end
 
 end

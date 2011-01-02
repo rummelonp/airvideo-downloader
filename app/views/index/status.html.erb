@@ -3,7 +3,7 @@
 <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 <%= form_tag :parse, method: :get do %>
-<p>url: <%= text_field_tag :url %></p>
+<p>url: <%= text_field_tag :url, '', size: 50 %></p>
 <p><%= submit_tag "parse" %></p>
 <% end %>
 <div id="content">

@@ -1,17 +1,20 @@
 <h2>parse</h2>
+<%= form_tag :download do  %>
 <dt>
   <dl>title:</dl>
-  <dd><%= @video.title %></dd>
+  <dd><%= text_field_tag :title, @video.title, size: 50 %></dd>
   <dl>url:</dl>
-  <dd><%= @video.url %></dd>
+  <dd><%= text_field_tag :url, @video.url, size: 50 %></dd>
   <dl>video url:</dl>
-  <dd><%= @video.video_url %></dd>
+  <dd><%= text_field_tag :video_url, @video.video_url, size: 50 %></dd>
   <dl>download path:</dl>
-  <dd><%= @video.download_path %></dd>
+  <dd><%= text_field_tag :download_path, @video.download_path, size: 50 %></dd>
+  <dl>encoded path:</dl>
+  <dd><%= text_field_tag :encoded_path, @video.encoded_path, size: 50 %></dd>
   <dl>downloaded:</dl>
   <dd><%= @video.downloaded %></dd>
-  <dl>encoded path:</dl>
-  <dd><%= @video.encoded_path %></dd>
   <dl>encoded:</dl>
   <dd><%= @video.encoded %></dd>
 </dt>
+<%= submit_tag 'download' %>
+<% end %>

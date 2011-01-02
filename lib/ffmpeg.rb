@@ -4,6 +4,7 @@ require 'shellwords'
 require 'active_support/core_ext/string/inflections'
 
 class Ffmpeg
+  LOGGER = Delayed::Worker.logger || RAILS_DEFAULT_LOGGER
 
   DEFAULT = {
     size: '640x480',
@@ -64,10 +65,10 @@ class Ffmpeg
                vcodec, vsize, vrate, vbit,
                acodec, achan, arate, abit,
                output].join(' ')
-    RAILS_DEFAULT_LOGGER.info self
-    RAILS_DEFAULT_LOGGER.info DEFAULT
-    RAILS_DEFAULT_LOGGER.info command
-    `#{command}`
+    LOGGER.info self
+    LOGGER.info DEFAULT
+    LOGGER.info command
+    LOGGER.info `#{command}`
   end
 
 end

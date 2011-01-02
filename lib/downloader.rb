@@ -9,6 +9,8 @@ Dir[Rails.root.join("lib/downloader/*.rb")].each {|f| require f}
 module Downloader
   extend self
 
+  LOGGER = Delayed::Worker.logger || RAILS_DEFAULT_LOGGER
+
   def parse(url)
     host = URI.parse(url).host
     parser = Base.parsers.find {|p| p.host === host} or
@@ -17,6 +19,6 @@ module Downloader
   end
 
   def download(video_url, download_path)
-    `wget -O #{download_path.shellescape} '#{video_url}' 2>&1`
+    LOGGER.info `wget -O #{download_path.shellescape} '#{video_url}' 2>&1`
   end
 end

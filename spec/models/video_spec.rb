@@ -23,4 +23,27 @@ describe Video do
     end
   end
 
+  describe 'title "Test Title" and video_url "http://example.com/video_url.flv"' do
+    before do
+      @title = 'Test Title'
+      @video_url = 'http://example.com/video_url.flv'
+    end
+    describe :filename do
+      subject { Video.filename @title }
+      it { should == 'test_title' }
+    end
+    describe :extname do
+      subject { Video.extname @video_url }
+      it { should == '.flv' }
+    end
+    describe :download_filename do
+      subject { Video.download_filename @title, @video_url }
+      it { should == 'test_title.flv' }
+    end
+    describe :encoded_filename do
+      subject { Video.encoded_filename @title, @video_url }
+      it { should == 'test_title - airvideo.m4v' }
+    end
+  end
+
 end

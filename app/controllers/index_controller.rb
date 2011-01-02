@@ -15,9 +15,9 @@ class IndexController < ApplicationController
   end
 
   def download
-    @video = Video.new params.delete(:video)
     begin
-      raise unless @video.valid?
+      @video = Video.create! params.delete(:video)
+      @video.proccess
       flash[:notice] = 'Downloading and encoding.'
       redirect_to :status
     rescue => e

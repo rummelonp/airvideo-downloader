@@ -10,6 +10,21 @@ class Video < ActiveRecord::Base
   validates_presence_of :download_path
   validates_presence_of :encoded_path
 
+  def download
+    Downloader.download(self.video_url, self.download_path)
+  end
+
+  def encode
+    Ffmpeg.encode(self.download_path, self.encoded_path)
+  end
+
+  def proccess
+    download
+    encode
+  end
+
+  handle_asynchronously :proccess
+
   class << self
     def parse(url)
       downloader = Downloader.parse url

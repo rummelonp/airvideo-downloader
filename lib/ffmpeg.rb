@@ -64,6 +64,9 @@ class Ffmpeg
                vcodec, vsize, vrate, vbit,
                acodec, achan, arate, abit,
                output].join(' ')
+    RAILS_DEFAULT_LOGGER.info self
+    RAILS_DEFAULT_LOGGER.info DEFAULT
+    RAILS_DEFAULT_LOGGER.info command
     `#{command}`
   end
 

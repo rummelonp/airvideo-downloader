@@ -32,7 +32,10 @@ describe IndexController do
 
     context 'with url' do
       describe :response do
-        before { get :parse, url: 'http://example.com/video_url' }
+        before do
+          Video.stub(:parse).and_return(Video.new)
+          get :parse, url: 'http://example.com/video_url'
+        end
         subject { response }
         it { should be_success }
       end

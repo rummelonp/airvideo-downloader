@@ -3,6 +3,13 @@ class Video < ActiveRecord::Base
   ENCODE_SUFFIX = ' - airvideo'
   ENCODE_EXT    = '.m4v'
 
+  validates_uniqueness_of :url
+  validates_presence_of :url
+  validates_presence_of :title
+  validates_presence_of :video_url
+  validates_presence_of :download_path
+  validates_presence_of :encoded_path
+
   class << self
     def parse(url)
       downloader = Downloader.parse url

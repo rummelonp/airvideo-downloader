@@ -28,16 +28,11 @@ describe Downloader do
   describe :download do
     before do
       @download_file = Tempfile.new('test_video.flv')
-      @download_path = @download_file.path
-      Downloader.stub(:download).and_return(@download_file)
+      Downloader.stub(:download).and_return(nil)
     end
-    describe :download_path do
-      subject { Downloader.download('http://example.com/video_url', @download_path) }
-      it { subject.path.should == @download_path }
-    end
-    describe :file do
-      subject { File }
-      it { should be_exists @download_file }
+
+    it 'file should be exists' do
+      File.should be_exists @download_file
     end
   end
   

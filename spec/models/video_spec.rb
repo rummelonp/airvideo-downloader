@@ -26,22 +26,21 @@ describe Video do
 
   describe :proccess do
     before do
-      @video = Video.new @valid_data
       Downloader.stub(:download).and_return(nil)
       Ffmpeg.stub(:encode).and_return(nil)
+      @video = Video.new @valid_data
+      @video.download
+      @video.encode
     end
-    describe :download, :downloaded do
-      before { @video.download }
-      subject { @video.downloaded }
-      it { should be_true }
+
+    subject { @video }
+
+    it 'downloaded should be true' do
+      subject.downloaded.should be_true
     end
-    describe :encode, :encoded do
-      before do
-        @video.downloaded = true
-        @video.encode
-      end
-      subject { @video.encoded }
-      it { should be_true }
+
+    it 'encoded should be true' do
+      subject.encoded.should be_true
     end
   end
 

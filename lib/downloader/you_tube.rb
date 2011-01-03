@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 module Downloader
+  # YouTube parser
   class YouTube < Base
     @host = 'www.youtube.com'
 

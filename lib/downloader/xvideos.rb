@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 module Downloader
+  # Xvideos parser
   class Xvideos < Base
     @host = 'www.xvideos.com'
 

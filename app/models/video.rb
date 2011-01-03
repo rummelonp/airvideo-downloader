@@ -11,14 +11,14 @@ class Video < ActiveRecord::Base
   validates_presence_of :encoded_path
 
   def download
-    return true if self.downloaded
+    return true if self.downloaded?
     Downloader.download(self.video_url, self.download_path)
     self.downloaded = true
     self.save!
   end
 
   def encode
-    return true if not self.downloaded or self.encoded
+    return true if not self.downloaded? or self.encoded?
     Ffmpeg.encode(self.download_path, self.encoded_path)
     self.encoded = true
     self.save!

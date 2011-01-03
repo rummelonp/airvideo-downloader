@@ -12,9 +12,9 @@
   <dl>encoded path:</dl>
   <dd><%= f.text_field :encoded_path, size: 50 %></dd>
   <dl>downloaded:</dl>
-  <dd><%= @video.downloaded %></dd>
+  <dd><%= @video.downloaded? %></dd>
   <dl>encoded:</dl>
-  <dd><%= @video.encoded %></dd>
+  <dd><%= @video.encoded? %></dd>
 </dt>
 <%= submit_tag 'download' %>
 <% end %>

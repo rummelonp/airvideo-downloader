@@ -53,12 +53,32 @@ describe Video do
 
   describe :recent do
     before do
-      Video.stub(:recent).and_return([Video.new] * 10)
+      @video = Video.new
+      @video.downloaded = true
+      @video.encoded = true
+      Video.stub(:recent).and_return([@video] * 10)
       @recent = Video.recent
     end
+
     subject { @recent }
+
     it { should have_at_most(10).items }
-    it { subject.first.should be_instance_of(Video) }
+
+    describe :first do
+      subject { @recent.first }
+
+      it 'should be instance of Video' do
+        should be_instance_of(Video)
+      end
+
+      it 'downloaded should be true' do
+        subject.downloaded.should be_true
+      end
+
+      it 'encoded should be true' do
+        subject.encoded.should be_true
+      end
+    end
   end
 
   describe 'title "Test Title" and video_url "http://example.com/video_url.flv"' do

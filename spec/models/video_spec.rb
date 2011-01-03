@@ -47,8 +47,12 @@ describe Video do
 
   describe 'parse "http://example.com/video_url"' do
     before { Video.stub(:parse).and_return(Video.new) }
+
     subject { Video.parse('http://example.com/video_url') }
-    it { should be_instance_of(Video) }
+
+    it 'should be instance of Video' do
+      should be_instance_of(Video)
+    end
   end
 
   describe :recent do

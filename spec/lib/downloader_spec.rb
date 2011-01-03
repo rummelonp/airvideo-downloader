@@ -3,12 +3,26 @@ require 'tempfile'
 
 describe Downloader do
 
-  describe 'parse "http://example.com/youtube_video_url"' do
-    before do
-      Downloader.stub(:parse).and_return(Downloader::YouTube.new)
+  describe :parse do
+    context 'http://example.com/youtube_video_url' do
+      before do
+        Downloader.stub(:parse).and_return(Downloader::YouTube.new)
+      end
+
+      subject { Downloader.parse 'http://example.com/youtube_video_url' }
+
+      it { should be_instance_of(Downloader::YouTube) }
     end
-    subject { Downloader.parse 'http://example.com/youtube_video_url' }
-    it { should be_instance_of(Downloader::YouTube) }
+
+    context 'http://example.com/xvideos_video_url' do
+      before do
+        Downloader.stub(:parse).and_return(Downloader::Xvideos.new)
+      end
+
+      subject { Downloader.parse 'http://example.com/xvideos_video_url' }
+
+      it { should be_instance_of(Downloader::Xvideos) }
+    end
   end
 
   describe :download do

@@ -10,6 +10,7 @@ describe Video do
       download_path: '/var/media/movie/test_title.flv',
       encoded_path: '/var/media/movie/test_title - airvideo.m4v'
     }
+
     @invalid_data = @valid_data.merge url: nil
   end
 
@@ -18,6 +19,7 @@ describe Video do
       subject { Video.new @valid_data }
       it { should be_valid }
     end
+
     context 'presence without url' do
       subject { Video.new @invalid_data }
       it { should_not be_valid }

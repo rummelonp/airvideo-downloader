@@ -37,13 +37,9 @@ describe Video do
 
     subject { @video }
 
-    it 'downloaded should be true' do
-      subject.downloaded.should be_true
-    end
+    it { should be_downloaded }
 
-    it 'encoded should be true' do
-      subject.encoded.should be_true
-    end
+    it { should be_encoded }
   end
 
   describe 'parse "http://example.com/video_url"' do
@@ -76,13 +72,9 @@ describe Video do
         should be_instance_of(Video)
       end
 
-      it 'downloaded should be true' do
-        subject.downloaded.should be_true
-      end
+      it { should be_downloaded }
 
-      it 'encoded should be true' do
-        subject.encoded.should be_true
-      end
+      it { should be_encoded }
     end
   end
 

@@ -5,5 +5,5 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'delayed_job'
 
 group :development, :test do
-  gem 'rspec-rails', '>= 2.3.0'
+  gem 'rspec-rails', '>= 2.4.1'
 end
